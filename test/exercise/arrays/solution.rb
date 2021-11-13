@@ -27,11 +27,12 @@ module Exercise
             return mid
           end
           if quess > query
-            high = mid
+            high = mid - 1;
           else
             low = mid + 1
           end
         end
+        -1
       end
       
     end
