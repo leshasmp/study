@@ -10,39 +10,28 @@ module Exercise
           end
         end
         array.map do |num|
-          if num.positive?
-            num = max_number
-          else
-            num
-          end
+          num.positive? ? num = max_number : num
         end
       end
 
       def search(array, query)
-        if has_element(array, query)
-          array.find_index(query)
-        else
-          -1
-        end
-      end
-      
-      def has_element(array, query)
-        if array.empty?
-          return false
-        end
         low = 0
         high = array.length
-        mid = low + ((high - low) / 2)
-        quess = array[mid]
-        if quess == query
-          return true
+        while low <= high
+          mid = (low + high) / 2
+          quess = array[mid]
+          if quess.nil?
+            return -1
+          end
+          if quess == query
+            return mid
+          end
+          if quess > query
+            high = mid
+          else
+            low = mid + 1
+          end
         end
-        if quess > query
-          high = mid
-        else
-          low = mid + 1
-        end
-        has_element(array[low, high], query)
       end
       
     end
