@@ -2,9 +2,8 @@ module Exercise
   module Arrays
     class << self
       def replace(array)
-        positive_numbers = array.select { |num| num.positive? }
         max_number = array.first
-        positive_numbers.each do |num|
+        array.each do |num|
           if max_number < num
             max_number = num
           end
