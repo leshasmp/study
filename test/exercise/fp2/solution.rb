@@ -13,21 +13,21 @@ module Exercise
 
       # Написать свою функцию my_map
       def my_map
-        result = self.my_reduce([]) do |acc, el|
+        result = self.my_reduce(MyArray.new) do |acc, el|
           acc << yield(el)
         end
-        self.class.new(result)
+        result
       end
 
       # Написать свою функцию my_compact
       def my_compact
-        result = self.my_reduce([]) do |acc, el|
+        result = self.my_reduce(MyArray.new) do |acc, el|
           if !el.nil?
             acc << el
           end
           acc
         end
-        self.class.new(result)
+        result
       end
 
       # Написать свою функцию my_reduce
