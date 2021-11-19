@@ -5,10 +5,12 @@ module Exercise
       # Использовать свои написанные функции для реализации следующих - можно.
 
       # Написать свою функцию my_each
-      def my_each
-        for el in self
-          yield el
-        end
+      def my_each(&block)
+        return if self.empty?
+        head, *tail = self
+        block.call(head)
+        self.class.new(tail).my_each(&block)
+        self
       end
 
       # Написать свою функцию my_map
